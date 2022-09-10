@@ -1,16 +1,9 @@
-//
-//  main.cpp
-//  A2
-//
-//  Created by Yehia Abdelmohsen on 09/09/2022.
-//
-
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-int findMaxElement(int arr[],int size){
+int findMaxElement(const int arr[],int size){
     int max = arr[0];
     
     for(int i=1;i<size;i++){
@@ -21,9 +14,8 @@ int findMaxElement(int arr[],int size){
 }
 
 int computeFactorial(int x){
-    
     if(x < 0){
-        return NULL;
+        return 0;
     }
     else if(x == 0){
         return 1;
@@ -32,9 +24,9 @@ int computeFactorial(int x){
         return x*computeFactorial(x-1);
 }
 
-bool stringPattern(string s, string p){
-    int pLen = p.length();
-    int sLen = s.length();
+bool stringPattern(const string& s, const string& p){
+    unsigned int pLen = p.length();
+    unsigned int sLen = s.length();
 
     if(pLen > sLen)
         return false;
@@ -74,9 +66,9 @@ template <typename T> void printArray(T arr[], int size)
 {
     for(int i = 0; i<size; i++)
       cout<<arr[i]<<" ";
-      cout<<endl;
-}
 
+    cout<<endl;
+}
 
 
 int main() {
@@ -87,7 +79,7 @@ int main() {
     cout<<"Maximum element: "<<findMaxElement(arr,5)<<endl<<endl;
     
     int x=3;
-    cout<<"Factorial of x="<<x<<": "<<computeFactorial(3)<<endl<<endl;
+    cout<<"Factorial of x="<<x<<" is "<<computeFactorial(3)<<"."<<endl<<endl;
     
     string s1 = "seventy";
     string s2 = "seven";
