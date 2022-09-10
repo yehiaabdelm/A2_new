@@ -35,9 +35,9 @@ int computeFactorial(int a){
     return a;
 }
 
-int compareStrings(string compare, string compareTo){
-    return (compareTo<compare) ? 1: 0; //  1: compareTo comes before compare, 0: otherwise
-}
+//int compareStrings(string compare, string compareTo){
+//    return (compareTo<compare) ? 1: 0; //  1: compareTo comes before compare, 0: otherwise
+//}
 
 void swap(string *compare, string *compareTo)
 {
@@ -53,7 +53,7 @@ void selectionSort(string arr[], int n)
     {
         min_idx = i;
         for (j = i+1; j < n; j++){
-            if (compareStrings(arr[min_idx],arr[j])==1){
+            if (arr[min_idx]>arr[j]){
                 min_idx = j;
             }
         }
