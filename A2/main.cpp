@@ -61,25 +61,25 @@ int compareStrings(string compare, string compareTo){
     
     for (int i =0;i<len;i++){
         if(compare[i]==compareTo[i]){
-            ;
+            ; // pass since the elements are equal
         }
         else if (compare[i]>compareTo[i]){
-            return 1;
+            return 1; // compareTo comes before compare
         }
         else{
-            return 2;
+            return 2; // compare comes before compareTo
         }
         
     }
     
     if(cIsLonger==-1){
-        return 0;
+        return 0; // theyre the same string
     }
     else if (cIsLonger==1){
-        return 1;
+        return 1; // compareTo comes before compare
     }
     else{
-        return 2;
+        return 2; // compare comes before compareTo
     }
     
 }
@@ -88,17 +88,14 @@ int compareStrings(string compare, string compareTo){
 
 int main(int argc, const char * argv[]) {
     
-    cout<<"Find maximum element"<<endl;
-    
+
     int arr[5] = {12,2,1,2,34};
-    cout <<findMaxElement(arr,5)<<endl;
+    cout <<"Find maximum element: "<<findMaxElement(arr,5)<<endl;
     
-    cout<<"Compute factorial"<<endl;
-    cout<<computeFactorial(3)<<"\n";
+    cout<<"Compute factorial: "<<computeFactorial(3)<<endl;
     
     string s[2] = {"abc","def"};
-    
-    cout<<compareStrings(s[0],s[1]);
+    cout<<"Compare strings: "<<compareStrings(s[0],s[1])<<endl;
     
     return 0;
 }
