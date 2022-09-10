@@ -48,11 +48,11 @@ void swap(string *compare, string *compareTo)
  
 void selectionSort(string arr[], int n)
 {
-    int i, j, min_idx;
-    for (i = 0; i < n-1; i++)
+    int min_idx;
+    for (int i = 0; i < n-1; i++)
     {
         min_idx = i;
-        for (j = i+1; j < n; j++){
+        for (int j = i+1; j < n; j++){
             if (arr[min_idx]>arr[j]){
                 min_idx = j;
             }
