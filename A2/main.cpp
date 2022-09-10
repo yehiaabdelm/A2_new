@@ -41,50 +41,8 @@ void printArray(int a[],int size){
       cout<<endl;
 }
 int compareStrings(string compare, string compareTo){
-    int len;
-    int cLength = int(compare.length());
-    int cTLength = int(compareTo.length());
-    
-    int cIsLonger = -1;
-    
-    if (cLength==cTLength){
-        len = cLength;
-    }
-    else if(cLength<cTLength){
-        len = cLength;
-        cIsLonger = 0;
-    }
-    else{
-        len = cTLength;
-        cIsLonger = 1;
-    }
-    
-    for (int i =0;i<len;i++){
-        if(compare[i]==compareTo[i]){
-            ; // pass since the elements are equal
-        }
-        else if (compare[i]>compareTo[i]){
-            return 1; // compareTo comes before compare
-        }
-        else{
-            return 2; // compare comes before compareTo
-        }
-        
-    }
-    
-    if(cIsLonger==-1){
-        return 0; // theyre the same string
-    }
-    else if (cIsLonger==1){
-        return 1; // compareTo comes before compare
-    }
-    else{
-        return 2; // compare comes before compareTo
-    }
-    
+    return (compareTo<compare) ? 1: (compareTo==compare) ? 0: 2; // 0: theyre the same string, 1: compareTo comes before compare, 2: compare comes before compareTo
 }
-
-
 
 int main(int argc, const char * argv[]) {
     
@@ -94,7 +52,7 @@ int main(int argc, const char * argv[]) {
     
     cout<<"Compute factorial: "<<computeFactorial(3)<<endl;
     
-    string s[2] = {"abc","def"};
+    string s[2] = {"xyz","abc"};
     cout<<"Compare strings: "<<compareStrings(s[0],s[1])<<endl;
     
     return 0;
