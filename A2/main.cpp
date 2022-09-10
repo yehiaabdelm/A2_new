@@ -35,14 +35,41 @@ int computeFactorial(int a){
     return a;
 }
 
-void printArray(int a[],int size){
+int compareStrings(string compare, string compareTo){
+    return (compareTo<compare) ? 1: 0; //  1: compareTo comes before compare, 0: otherwise
+}
+
+void swap(string *compare, string *compareTo)
+{
+    string temp = *compare;
+    *compare = *compareTo;
+    *compareTo = temp;
+}
+ 
+void selectionSort(string arr[], int n)
+{
+    int i, j, min_idx;
+    for (i = 0; i < n-1; i++)
+    {
+        min_idx = i;
+        for (j = i+1; j < n; j++){
+            if (compareStrings(arr[min_idx],arr[j])==1){
+                min_idx = j;
+            }
+        }
+        if(min_idx!=i)
+            swap(&arr[min_idx], &arr[i]);
+    }
+}
+
+template <typename T> void printArray(T arr[],int size)
+{
     for(int i = 0;i<size; i++)
-      cout<<a[i]<<" ";
+      cout<<arr[i]<<" ";
       cout<<endl;
 }
-int compareStrings(string compare, string compareTo){
-    return (compareTo<compare) ? 1: (compareTo==compare) ? 0: 2; // 0: theyre the same string, 1: compareTo comes before compare, 2: compare comes before compareTo
-}
+
+
 
 int main(int argc, const char * argv[]) {
     
@@ -52,8 +79,10 @@ int main(int argc, const char * argv[]) {
     
     cout<<"Compute factorial: "<<computeFactorial(3)<<endl;
     
-    string s[2] = {"xyz","abc"};
+    string s[6] = {"xyz","abc","abc","abcd","xyz","abca"};
     cout<<"Compare strings: "<<compareStrings(s[0],s[1])<<endl;
     
+    selectionSort(s,6);
+    printArray(s,6);
     return 0;
 }
