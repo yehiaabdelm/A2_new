@@ -6,7 +6,7 @@
 //
 
 #include <iostream>
-#include<string>
+#include <string>
 
 using namespace std;
 
@@ -20,24 +20,32 @@ int findMaxElement(int arr[],int size){
     return max;
 }
 
-int computeFactorial(int a){
+int computeFactorial(int x){
     
-    if(a==1 || a==0){
-        return 1;
-    }
-    else if(a<0){
+    if(x < 0){
         return NULL;
     }
-
-    for (int i = a; i>1; i--){
-        a = a*(i-1);
+    else if(x == 0){
+        return 1;
     }
-    return a;
+    else
+        return x*computeFactorial(x-1);
 }
 
-//int compareStrings(string compare, string compareTo){
-//    return (compareTo<compare) ? 1: 0; //  1: compareTo comes before compare, 0: otherwise
-//}
+bool stringPattern(string s, string p){
+    int pLen = p.length();
+    int sLen = s.length();
+
+    if(pLen > sLen)
+        return false;
+    else{
+        for(int i=0; i<sLen - pLen; i++){
+            if(s.substr(i,pLen) == p)
+                return true;
+        }
+        return false;
+    }
+}
 
 void swap(string *compare, string *compareTo)
 {
@@ -62,27 +70,39 @@ void selectionSort(string arr[], int n)
     }
 }
 
-template <typename T> void printArray(T arr[],int size)
+template <typename T> void printArray(T arr[], int size)
 {
-    for(int i = 0;i<size; i++)
+    for(int i = 0; i<size; i++)
       cout<<arr[i]<<" ";
       cout<<endl;
 }
 
 
 
-int main(int argc, const char * argv[]) {
+int main() {
     
-
     int arr[5] = {12,2,1,2,34};
-    cout <<"Find maximum element: "<<findMaxElement(arr,5)<<endl;
+    cout<<"Array: ";
+    printArray(arr,5);
+    cout<<"Maximum element: "<<findMaxElement(arr,5)<<endl<<endl;
     
-    cout<<"Compute factorial: "<<computeFactorial(3)<<endl;
+    int x=3;
+    cout<<"Factorial of x="<<x<<": "<<computeFactorial(3)<<endl<<endl;
+    
+    string s1 = "seventy";
+    string s2 = "seven";
+    
+    if(stringPattern(s1,s2))
+        cout << "The string \"" << s1 << "\" contains the pattern \"" << s2 << "\"." << endl << endl;
+    else
+        cout << "The string \"" << s1 << "\" does not contain the pattern \"" << s2 << "\"." << endl << endl;
     
     string s[6] = {"xyz","abc","abc","abcd","xyz","abca"};
-    cout<<"Compare strings: "<<compareStrings(s[0],s[1])<<endl;
-    
-    selectionSort(s,6);
+    cout <<"String array before sorting: ";
     printArray(s,6);
+    selectionSort(s,6);
+    cout <<"String array after sorting: ";
+    printArray(s,6);
+    
     return 0;
 }
