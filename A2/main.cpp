@@ -42,31 +42,6 @@ bool stringPattern(const string& s, const string& p){
     }
 }
 
-// Utility function for string sorting algorithm
-void swap(string *compare, string *compareTo)
-{
-    string temp = *compare;
-    *compare = *compareTo;
-    *compareTo = temp;
-}
-
-// String sort with selection sort
-void selectionSort(string arr[], int n)
-{
-    int i, j, min_idx;
-    for (i = 0; i < n-1; i++)
-    {
-        min_idx = i;
-        for (j = i+1; j < n; j++){
-            if (arr[min_idx]>arr[j]){
-                min_idx = j;
-            }
-        }
-        if(min_idx!=i)
-            swap(&arr[min_idx], &arr[i]);
-    }
-}
-
 // Utility function for main
 template <typename T> void printArray(T arr[], int size)
 {
@@ -97,14 +72,6 @@ int main() {
         cout << "The string \"" << s1 << "\" contains the pattern \"" << s2 << "\"." << endl << endl;
     else
         cout << "The string \"" << s1 << "\" does not contain the pattern \"" << s2 << "\"." << endl << endl;
-
-    // Question 4 (String Sort)
-    string s[6] = {"xyz","abc","abc","abcd","xyz","abca"};
-    cout <<"String array before sorting: ";
-    printArray(s,6);
-    selectionSort(s,6);
-    cout <<"String array after sorting: ";
-    printArray(s,6);
     
     return 0;
 }
