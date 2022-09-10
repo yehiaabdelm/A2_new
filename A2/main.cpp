@@ -40,6 +40,50 @@ void printArray(int a[],int size){
       cout<<a[i]<<" ";
       cout<<endl;
 }
+int compareStrings(string compare, string compareTo){
+    int len;
+    int cLength = int(compare.length());
+    int cTLength = int(compareTo.length());
+    
+    int cIsLonger = -1;
+    
+    if (cLength==cTLength){
+        len = cLength;
+    }
+    else if(cLength<cTLength){
+        len = cLength;
+        cIsLonger = 0;
+    }
+    else{
+        len = cTLength;
+        cIsLonger = 1;
+    }
+    
+    for (int i =0;i<len;i++){
+        if(compare[i]==compareTo[i]){
+            ;
+        }
+        else if (compare[i]>compareTo[i]){
+            return 1;
+        }
+        else{
+            return 2;
+        }
+        
+    }
+    
+    if(cIsLonger==-1){
+        return 0;
+    }
+    else if (cIsLonger==1){
+        return 1;
+    }
+    else{
+        return 2;
+    }
+    
+}
+
 
 
 int main(int argc, const char * argv[]) {
@@ -51,5 +95,10 @@ int main(int argc, const char * argv[]) {
     
     cout<<"Compute factorial"<<endl;
     cout<<computeFactorial(3)<<"\n";
+    
+    string s[2] = {"abc","def"};
+    
+    cout<<compareStrings(s[0],s[1]);
+    
     return 0;
 }
